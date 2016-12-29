@@ -1,0 +1,108 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Swagger UI</title>
+        
+        <link  rel="stylesheet" media="screen"
+               th:href="@{/css/swagger-reset.css}"
+               href="../../static/css/swagger-reset.css" />
+        <link  rel="stylesheet" media="screen"
+               th:href="@{/css/swagger-screen.css}"
+               href="../../static/css/swagger-screen.css" />
+
+        <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css"/>
+
+        <script src="../../static/js/swagger-ui-2.0.17/shred.bundle.js"
+                th:src="@{/js/swagger-ui-2.0.17/shred.bundle.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/jquery-1.8.0.min.js"
+                th:src="@{/js/swagger-ui-2.0.17/jquery-1.8.0.min.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/jquery.slideto.min.js"
+                th:src="@{/js/swagger-ui-2.0.17/jquery.slideto.min.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/jquery.wiggle.min.js"
+                th:src="@{/js/swagger-ui-2.0.17/jquery.wiggle.min.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/jquery.ba-bbq.min.js"
+                th:src="@{/js/swagger-ui-2.0.17/jquery.ba-bbq.min.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/handlebars-1.0.0.js"
+                th:src="@{/js/swagger-ui-2.0.17/handlebars-1.0.0.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/underscore-min.js"
+                th:src="@{/js/swagger-ui-2.0.17/underscore-min.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/backbone-min.js"
+                th:src="@{/js/swagger-ui-2.0.17/backbone-min.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/swagger.js"
+                th:src="@{/js/swagger-ui-2.0.17/swagger.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/swagger-ui.js"
+                th:src="@{/js/swagger-ui-2.0.17/swagger-ui.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/highlight.7.3.pack.js"
+                th:src="@{/js/swagger-ui-2.0.17/highlight.7.3.pack.js}">
+        </script>
+        <script src="../../static/js/swagger-ui-2.0.17/highlight.7.3.pack.js"
+                th:src="@{/js/swagger-ui-2.0.17/highlight.7.3.pack.js}">
+        </script>
+
+        <script type="text/javascript">
+            $(function() {
+                var apiUrl = window.location.protocol + "//" + window.location.host;
+                if (window.location.pathname.indexOf('/api') > 0) {
+                    apiUrl += window.location.pathname.substring(0, window.location.pathname.indexOf('/api'))
+                }
+                apiUrl += "/api-docs";
+                log('API URL: ' + apiUrl);
+
+                window.swaggerUi = new SwaggerUi({
+                    url: apiUrl,
+                    dom_id: "swagger-ui-container",
+                    supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
+                    onComplete: function(swaggerApi, swaggerUi) {
+                        log("Loaded SwaggerUI");
+
+                        if (typeof initOAuth == "function") {
+                            /*
+                             initOAuth({
+                             clientId: "your-client-id",
+                             realm: "your-realms",
+                             appName: "your-app-name"
+                             });
+                             */
+                        }
+                        $('pre code').each(function(i, e) {
+                            hljs.highlightBlock(e)
+                        });
+                    },
+                    onFailure: function(data) {
+                        log("Unable to Load SwaggerUI");
+                    },
+                    docExpansion: "none"
+                });
+
+
+                window.swaggerUi.load();
+            });
+        </script>
+    </head>
+
+    <body class="swagger-section">
+        <div id="header">
+            <div class="swagger-ui-wrap">
+                <a id="logo" href="http://swagger.wordnik.com">swagger</a>
+                <form id='api_selector'>
+                    <div class="input"><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
+                    <div class="input"><a id="explore" href="#">Explore</a></div>
+                </form>
+            </div>
+        </div>
+
+        <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
+        <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+    </body>
+</html>

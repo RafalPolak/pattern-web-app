@@ -7,6 +7,7 @@ Simple web application with good pattern's
  - Spring Boot 
  - Thymeleaf 
  - Bootstrap 
+ - Font Awesome
  - Flyway   
  - MySQL
  - Maven
@@ -17,5 +18,6 @@ Simple web application with good pattern's
 - [ ] Prepare database diagram
 - [ ] Create project structure
 - [x] Create maven profiles
-- [ ] Create entity/snapshot/finder/bo/api/repo
+- [x] Create entity/snapshot/finder/bo/api/repo
+- [x] Add Swagger to project
 - [ ] Build fronted for nice look with RWD
