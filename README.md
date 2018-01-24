@@ -6,7 +6,7 @@ Simple web application with good pattern's
  - Angular 
  - Spring Boot 
  - Thymeleaf 
- - Bootstrap 
+ - Bootstrap 3.3.7
  - Font Awesome
  - Flyway   
  - MySQL
