@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="patter-web-app:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="patternWebApp-0.0.1.war">
+      <element id="artifact" artifact-name="patter-web-app:war exploded" />
+    </root>
+  </artifact>
+</component>
